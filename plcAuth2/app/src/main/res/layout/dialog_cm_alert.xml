@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="32dp"
+    android:orientation="vertical"
+    android:background="@drawable/background_cm_alert">
+
+    <TextView
+        android:id="@+id/cm_alert_message_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        tools:text="@string/alert_pin_message"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginHorizontal="20dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/negative_button"
+            style="@style/negative_button_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1"
+            android:text="@string/alert_cancel_button"/>
+
+        <Button
+            android:id="@+id/positive_button"
+            style="@style/positive_button_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:text="@string/alert_delete_button"/>
+
+    </LinearLayout>
+
+</LinearLayout>

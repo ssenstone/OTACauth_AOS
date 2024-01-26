@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/actionBar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    android:paddingHorizontal="20dp"
+    android:backgroundTint="@android:color/transparent"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/setting_back_image"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="2dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/ic_back"/>
+
+    <TextView
+        android:id="@+id/setting_bar_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_gravity="center_vertical"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        tools:text="@string/setting_bar_security_title"
+        android:layout_weight="1"/>
+
+   <TextView
+       android:id="@+id/setting_action_button"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_gravity="center_vertical"
+       android:textSize="16sp"
+       android:textStyle="bold"
+       android:text="@string/setting_bar_account_complete"
+       android:textColor="@color/primary_button_background_color"/>
+
+</LinearLayout>

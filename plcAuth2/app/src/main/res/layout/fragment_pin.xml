@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:weightSum="1"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.15"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:text="@string/pin_title_text"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="8dp"
+        android:textSize="16sp"
+        android:text="@string/pin_message_text"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:paddingHorizontal="24dp"
+        android:orientation="horizontal">
+
+       <com.google.android.material.textfield.TextInputEditText
+           android:id="@+id/pin_1"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:maxLength="1"
+           android:layout_marginEnd="8dp"
+           android:paddingVertical="8dp"
+           android:textAlignment="center"
+           android:textStyle="bold"
+           android:textSize="24sp"
+           android:textColorHint="@color/hint_text_color"
+           android:hint="*"
+           android:background="@drawable/background_user_key_edit"/>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pin_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:maxLength="1"
+            android:layout_marginEnd="8dp"
+            android:paddingVertical="8dp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textColorHint="@color/hint_text_color"
+            android:hint="*"
+            android:background="@drawable/background_user_key_edit"/>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pin_3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:maxLength="1"
+            android:layout_marginEnd="8dp"
+            android:paddingVertical="8dp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textColorHint="@color/hint_text_color"
+            android:hint="*"
+            android:background="@drawable/background_user_key_edit"/>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pin_4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:maxLength="1"
+            android:layout_marginEnd="8dp"
+            android:paddingVertical="8dp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textColorHint="@color/hint_text_color"
+            android:hint="*"
+            android:background="@drawable/background_user_key_edit"/>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pin_5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:maxLength="1"
+            android:layout_marginEnd="8dp"
+            android:paddingVertical="8dp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textColorHint="@color/hint_text_color"
+            android:hint="*"
+            android:background="@drawable/background_user_key_edit"/>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/pin_6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:maxLength="1"
+            android:layout_marginEnd="8dp"
+            android:paddingVertical="8dp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textColorHint="@color/hint_text_color"
+            android:hint="*"
+            android:background="@drawable/background_user_key_edit"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/warning_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="24dp"
+        android:textColor="@color/warning_text_color"
+        android:textSize="12sp"
+        tools:text="@string/pin_warning_message"
+        android:drawablePadding="4dp"
+        app:drawableStartCompat="@drawable/ic_warning_pin" />
+
+
+</LinearLayout>

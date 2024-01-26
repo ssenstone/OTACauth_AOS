@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OTAC auth</string>
+    <string name="otac">OTAC</string>
+    <string name="version_title">Version information</string>
+
+    <string name="setting_title">Settings</string>
+    <string name="setting_account">Edit Account</string>
+    <string name="setting_security">Security Settings</string>
+    <string name="setting_language">Change language</string>
+    <string name="setting_terms_of_service">Terms of Use</string>
+
+    <string name="button_terms_of_service">Terms of Service</string>
+    <string name="button_privacy_policy">Privacy Policy</string>
+    <string name="button_save">Save</string>
+    <string name="failed_finger_print">Failed FingerPrint</string>
+
+    <string name="alert_pin_change_cancel">Do you want to discard PIN change?</string>
+    <string name="alert_new_pin_failed">PIN does not match</string>
+    <string name="alert_no_bioinfo_message">Biometric authentication activation failed. Please check the biometric information registered on the device and try again.</string>
+    <string name="alert_pin_message">As the biometric information registered on your phone has  changed,\nauthentication factor has changed to PIN.\n\nTo use the biometric authentication please\nre-register biometric information in Settings.</string>
+    <string name="alert_pin_faild_message">Input error occurred 5 times.\nApp will be reset.</string>
+    <string name="alert_pin_warning_message">PIN failed 3 times.\nIf it fails more than 5 times, the app will reset. </string>
+    <string name="alert_qr_failed_message">An error occurred.\nPlease generate a new User Key.</string>
+    <string name="alert_add_account_button">Add Account</string>
+    <string name="alert_ok_button">Close</string>
+    <string name="alert_cancel_button">Cancel</string>
+    <string name="alert_delete_button">Delete</string>
+    <string name="account_delete_message">Are you sure you want to delete the account?</string>
+
+    <string name="guide_title_01">Register an account with camera</string>
+    <string name="guide_title_02">Authenticate with OTAC code</string>
+    <string name="guide_message_01">Scan QR code to register account.</string>
+    <string name="guide_message_02">When using two-factor authentication\nenter your app\'s OTAC code.</string>
+
+    <string name="guide_button_text">Getting started</string>
+
+    <string name="pin_top_bar_text">Change PIN</string>
+    <string name="pin_title_text">Enter PIN</string>
+    <string name="default_pin_message_text">Please enter the 6-digit PIN number you want to use.</string>
+    <string name="new_pin_message_text">Please enter the 6-digit PIN number you want to use.</string>
+    <string name="new_pin_one_more_message_text">Please re-enter the 6-digit PIN number you want to use.</string>
+    <string name="pin_message_text">Please enter your existing 6-digit PIN.</string>
+    <string name="pin_warning_message">PIN does not match.(Numbers remaining : %d/%d)</string>
+
+    <string name="otp_search_bar_hint">Search your account</string>
+    <string name="otp_blank_message">There is no registered account.</string>
+    <string name="generate_account_title">User_Key</string>
+
+    <string name="user_key_message">Contact administrator for registration failure.</string>
+    <string name="reload_button">Generate new User Key</string>
+    <string name="user_key_guide">• Please enter User Key on the account registration page of the admin portal.\n\n• Click [Scan QR code] at the bottom to scan the QR code from the admin portal\n\n• If you cannot use the camera, please proceed with [Enter  manually].</string>
+    <string name="qrscan_button">Scan QR code</string>
+    <string name="qrcode_title">Pairing Key</string>
+    <string name="qrcode_edit_button">Enter  manually</string>
+    <string name="qrcode_button_text">Enter  manually</string>
+    <string name="qrcode_edit_warning_message">️You entered an incorrect Pairing Key.</string>
+    <string name="qrscan_message">Please scan the\nQR code displayed on the admin portal.</string>
+
+    <string name="otac_guide">• Please enter the Pairing Key at the bottom of the QR code on the admin portal.\n• Press [Next] at the bottom.</string>
+    <string name="otac_button">Next</string>
+
+    <string name="security_measures">Authentication Type</string>
+    <string name="security_use_all">Use both</string>
+    <string name="update_button">Change</string>
+    <string name="delete_button">Delete</string>
+    <string name="use_button">Use</string>
+    <string name="switch_pin">PIN</string>
+    <string name="switch_other">BIO</string>
+    <string name="biometric">Biometric</string>
+
+    <string name="account_title">Edit Account Information</string>
+    <string name="account_message_blank">Use letters/numbers/symbols, max length is 20 characters</string>
+    <string name="account_message_fail">This account name has already been registered.</string>
+    <string name="account_guide">• The account name can be changed later in settings.\n• Click [Finish] at the bottom.</string>
+    <string name="account_name_complete_button">Finish</string>
+
+    <string name="account_name_change_title">Account Name</string>
+
+    <string name="setting_bar_account_complete">Done</string>
+    <string name="setting_bar_account_delete">Delete</string>
+    <string name="setting_bar_account_title">Edit Account Information</string>
+    <string name="setting_bar_security_title">Security Settings</string>
+    <string name="setting_bar_auth_title">Authentication</string>
+    <string name="setting_bar_pin_title">Change PIN</string>
+    <string name="setting_language_title">Change Language</string>
+
+    <string name="title_terms_of_service">OTAC Auth Application Terms and Conditions</string>
+
+    <string name="middle_title_1_terms_of_service">Article 1: Purpose</string>
+    <string name="message_1_terms_of_service">These terms and conditions regulate the utilization of the \'OTAC auth app\' (hereinafter   referred   to   as   the   \'App\'),   a   public   application   provided   by \'swIDch   Ltd.\'   (hereinafter   referred   to   as   the   \'Company\'),   designed   for employing   the   authentication   solution   extended   by   the   Company.   The primary objective is to establish comprehensive guidelines for all pertinent matters.</string>
+    <string name="middle_title_2_terms_of_service">Article 2: Definition of Terms</string>
+    <string name="message_2_terms_of_service">Within   the   confines   of   these   Terms   and   Conditions,   the   following definitions apply:\n1. \'OTAC auth app\': Refers to an application installed on the user\'s smartphone, generating a one-time authentication code (Dynamic One-Time Authentication Code) for user authentication.\n2. \'User\': An individual authorized by a customer who has installed the   authentication   solution   provided   by   the   \'Company\'   to   access the customer’s facilities or systems through user authentication.\n3. \'User  authentication\':   The   process   by   which   a   user   obtains permission to access a facility or system through the app installed on their mobile phone.\n4. \'Authentication   solution\':   Pertains   to   the   installation   and implementation of the \'Company\'s\' OTAC authentication system in the   customer\'s   equipment   or   system.   The   process   involves registering and managing users who can access the equipment or system   directly   on   the   management   page   (web)   or   the   relevant equipment.   The   primary   purpose   of   this   service   is   to   control access.\n5. \'Administrator  Page\':   This   is   a   web   service   provided   by   the \'Company\' for customers who have installed and implemented the \'Company\'s\'   authentication   solution.   The   service   facilitates   the management of users authorized to access the customer\'s facilities or systems through the user authentication process.</string>
+    <string name="middle_title_3_terms_of_service">Article   3:   Contents   of   App   Services,   Eligibility,   and Supported Platforms</string>
+    <string name="message_3_terms_of_service">1. This   service   generates   a   continuously   changing   one-time authentication code (Dynamic One-Time Authentication Code) via the \'app\' to oversee users with access to the customer’s facilities or systems.\n2. By default, this service operates 24/7, 365 days a year, unless an exceptional issue arises due to a business or technical concern on the   Company\'s   part.   It   is   extended   at   no   cost   to   customers   who have   implemented   the   Company\'s   authentication   solution   in accordance with the contract terms.\n3. Tailored   for   users   who   have   implemented   the   \'Company’s\' authentication solution and have received authorization for access to   the   customer’s   facilities   and   systems   through   the   user authentication process.\n4. Accessible through both Apple (iOS) and Android smartphones, the service\'s   compatibility   may   be   subject   to   the   \'Company\'s\' discretion,   which   could   include   limitations   based   on   the smartphone\'s OS version.</string>
+    <string name="middle_title_4_terms_of_service">Article 4: User Registration</string>
+    <string name="message_4_terms_of_service">1. Users are required to download the \'app\' from platforms such as the   App   Store,   Google   Play,   etc.,   install   it   on   their   smartphones, and proceed with the user registration process as outlined below:\n2. Upon   installation   of   the   \'app,\'   users   should   carefully   follow   the provided instructions and execute the basic installation process to launch the application.\n3. Upon   launching   the   installed   \'app,\'   a   unique   user   number   (User Key)   is   generated   within   the   application   for   user   authentication. Subsequently,   users   are   required   to   input   this   user   key   into   the administrator   page   (Web)   or   a   facility   necessitating   access approval.   Following   this,   a   QR   code   is   generated   on   the administrator page or facility. Users can opt to directly scan the QR code   or   alternatively   register   it   by   entering   the   user   registration data received via email directly into the smartphone app.\n4. Individual   accounts   corresponding   to   registered   facilities   and systems are visibly displayed within the smartphone \'app.\'\n5. User   registration   is   conducted   based   on   the   authentication   type integrated   into   the   customer\'s   equipment   (facility)   and   system, following these approaches:\nA. Authentication   through   server:   Completed   with   a   one-time registration.\nB. Certification   through   individual   equipment   (facility): Registration   is   performed   individually   by   completing   the equipment registration process.\n6. In cases where users arbitrarily delete access rights (account) to any   facility   or   system   registered   on   the   smartphone,   the restoration of access rights requires the re-execution of the user registration process for the pertinent facility or system.</string>
+    <string name="middle_title_5_terms_of_service">Article 5: Use of App Services</string>
+    <string name="message_5_terms_of_service">1. Following user registration as outlined in Article 4, users activate the   \'App\'   when   gaining   access   to   the   facility   or   system.   They generate   a   continually   changing   one-time   authentication   code (Dynamic   One-Time   Authentication   Code)   and   employ   it   to authorize entry into the facility or system.\n2. If the user fails to input the generated authentication code into the facility   or   system   within   the   specified   time   set   by   the   customer, the authentication code\'s validity will expire. In such cases, users must   input   the   newly   generated   authentication   code   to   proceed with the authentication process.\n3. Users   are   responsible   for   verifying   all   conditions,   including communication   status,   and   must   take   necessary   measures   to ensure the \'App\' functions normally.\n4. Users can operate the \'app\' on their smartphones, utilizing either the   PIN,   biometric   information,   or   both,   as   registered   during   the \'app\' installation. Settings adjustments are left to the discretion of the user.</string>
+    <string name="middle_title_6_terms_of_service">Article 6: Change and Suspension of App Service</string>
+    <string name="message_6_terms_of_service">1. The   \'Company\'   reserves   the   right   to   modify   all   or   part   of   the service   to   enhance   its   functionality.   In   such   instances,   the \'Company\' communicates these changes through the \'App.\'\n2. The \'Company\' retains the authority to limit or suspend all or part of the service under the following circumstances:\nA. Termination of the contract with the customer or when service upgrades and maintenance are deemed necessary.\nB. Unavailability of the service due to force majeure, such as a natural disaster or national emergency.\nC. Inability to maintain the service due to various circumstances within the control of the \'Company.\'\n3. In   the   event   of   service   discontinuation   as   per   Paragraph   2,   the \'Company\' shall make an announcement as specified in Paragraph 1 or directly notify the customer. However, this provision does not apply   if   service   interruption   occurs   due   to   reasons   beyond   the control of the \'Company,\' where advance notice is not feasible.</string>
+    <string name="middle_title_7_terms_of_service">Article 7: Personal Information Protection</string>
+    <string name="message_7_terms_of_service">1. Personal   information   protected   under   the   law,   particularly information necessary for user authentication, is managed directly by the customer who has implemented the authentication solution. The \'Company\' does not collect or store any personal information through this public \'App\' service.\n2. Users of the \'App\' are responsible for the secure management of their   personal   information,   including   but   not   limited   to   PIN   and biometric   data.   The   \'Company\'   emphasizes   the   following precautions:\nA. Users should refrain from sharing their PIN or biometric data with others to prevent unauthorized access.\nB. It   is   the   user\'s   responsibility   to   ensure   the   security   of   their smartphone,   including   protection   against   unauthorized access, installing security updates, and using reliable security software.\nC. Users   should   exercise   caution   and   avoid   downloading malicious software or apps that may compromise the security of their personal information.\nD. In   the   event   of   a   lost   or   stolen   smartphone,   users   must promptly report and take necessary actions.\n3. The \'Company\' disclaims responsibility for any unauthorized access or security breaches resulting from the user\'s failure to adhere to the precautions outlined in this article.</string>
+    <string name="middle_title_8_terms_of_service">Article 8: Indemnification</string>
+    <string name="message_8_terms_of_service">1. Beyond   the   scope   of   this   public   \'App\'   service,   the   \'Company\' disclaims   responsibility   for   any   damages   resulting   from   errors   in the   system   provided   for   user   authentication.   The   said   system   is constructed, installed, and managed by the customer.\n2. This   service   is   extended   exclusively   to   customers   who   have installed   and   implemented   the   \'Company’s\'   authentication solution.   The   \'Company\'   holds   no   responsibility   for   damages arising   from   the   arbitrary   use   of   the   service   by   third   parties   or customers.</string>
+    <string name="middle_title_9_terms_of_service">Article 9: Effectiveness of Terms and Conditions</string>
+    <string name="message_9_terms_of_service">These Terms and Conditions come into effect when the user installs the \'App\'   provided   by   the   \'Company\'   and   completes   user   registration   as outlined   in   Article   4.   This   process   should   align   with   the   procedures established by the individual customer who introduced the authentication solution.</string>
+    <string name="middle_title_10_terms_of_service">Article 10: Jurisdiction Court</string>
+    <string name="message_10_terms_of_service">In the event of a dispute concerning the services specified in these Terms and   Conditions,   the   competent   court   shall   abide   by   the   laws   and regulations of the United Kingdom.</string>
+    <string name="middle_title_11_terms_of_service">Supplementary Provisions</string>
+    <string name="message_11_terms_of_service">These terms and conditions take effect from January 1, 2024.</string>
+
+</resources>
+
+
+
+
+
