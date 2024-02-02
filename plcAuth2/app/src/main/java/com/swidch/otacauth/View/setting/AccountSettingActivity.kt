@@ -1,5 +1,6 @@
 package com.swidch.otacauth.View.setting
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -8,11 +9,14 @@ import androidx.fragment.app.Fragment
 import com.google.gson.GsonBuilder
 import com.swidch.otacauth.R
 import com.swidch.otacauth.View.component.Dialog.CMAlertDialog
+import com.swidch.otacauth.View.main.MainActivity
 import com.swidch.otacauth.databinding.ActivitySettingAccountBinding
 
 class AccountSettingActivity: AppCompatActivity() {
     private lateinit var binding: ActivitySettingAccountBinding
     private var cmAlertDialog: CMAlertDialog ? = null
+    private var step = ACCOUNT_LIST
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySettingAccountBinding.inflate(layoutInflater)
@@ -25,6 +29,8 @@ class AccountSettingActivity: AppCompatActivity() {
         val back = findViewById<View>(R.id.setting_back_image)
         val actionbutton = findViewById<View>(R.id.setting_action_button)
         val settingTitle = findViewById<View>(R.id.setting_bar_title)
+        val intent = Intent(this, MainActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT)
 
         actionbutton.setOnClickListener {
             val changeAccountListString = com.swidch.otacauth.Utils.sharedPreference.SharedPreferenceManager.getChangeAccountList(this)
@@ -36,19 +42,30 @@ class AccountSettingActivity: AppCompatActivity() {
                 accountArrayList.addAll(accountList)
                 val json = gson.toJson(accountArrayList)
                 com.swidch.otacauth.Utils.sharedPreference.SharedPreferenceManager.setAccountList(this,json)
+                startActivity(intent)
                 finish()
             } else {
+                startActivity(intent)
                 finish()
                 return@setOnClickListener
             }
         }
         back.setOnClickListener {
-            finish()
+            when (step) {
+                NAME -> {
+                    switchAccountListFragment()
+                }
+                ACCOUNT_LIST -> {
+                    startActivity(intent)
+                    finish()
+                }
+            }
         }
     }
 
     fun switchAccountListFragment() {
         val bundle = Bundle()
+        step = ACCOUNT_LIST
         mFragment = SettingAccountListFragment()
         mFragment?.arguments = bundle
         supportFragmentManager.beginTransaction().replace(R.id.container, mFragment!!).commit()
@@ -56,7 +73,7 @@ class AccountSettingActivity: AppCompatActivity() {
 
     fun switchAccountNameChangeFragment(userId:String) {
         val bundle = Bundle()
-
+        step = NAME
         val actionButton = findViewById<TextView>(R.id.setting_action_button)
         val accountListString = com.swidch.otacauth.Utils.sharedPreference.SharedPreferenceManager.getAccountList(this)
         val gson = GsonBuilder().create()
@@ -91,8 +108,7 @@ class AccountSettingActivity: AppCompatActivity() {
     companion object {
         private val TAG = AccountSettingActivity::class.java.simpleName
         private var mFragment: Fragment? = null
-
-        const val QR_TATE_SCAN = 12
-        const val QR_STATE_CODE = 13
+        const val ACCOUNT_LIST = "ACCOUNT_LIST"
+        const val NAME = "NAME"
     }
 }
