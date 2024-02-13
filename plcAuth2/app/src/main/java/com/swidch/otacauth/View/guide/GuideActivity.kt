@@ -71,18 +71,18 @@ class GuideActivity: AppCompatActivity() {
         }
     }
 
-    fun  switchGuide2() {
+    private fun  switchGuide2() {
         binding.viewPager.currentItem = 1
     }
 
-    fun switchPinActivity() {
+    private fun switchPinActivity() {
         val intent = Intent(this, com.swidch.otacauth.View.PinActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT)
         startActivity(intent)
         finish()
     }
 
-    fun switchBiometricActivity() {
+    private fun switchBiometricActivity() {
         val intent = Intent(this, com.swidch.otacauth.View.BiometricActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT)
         startActivity(intent)

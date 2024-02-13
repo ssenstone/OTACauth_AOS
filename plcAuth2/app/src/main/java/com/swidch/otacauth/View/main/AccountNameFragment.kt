@@ -14,8 +14,7 @@ import org.json.JSONObject
 class AccountNameFragment: Fragment() {
     private var _binding:FragmentAccountNameBinding ? = null
     private val binding get() = _binding!!
-    private var accountItem: com.swidch.otacauth.Model.AccountItem =
-        com.swidch.otacauth.Model.AccountItem()
+    private var accountItem: com.swidch.otacauth.Model.AccountItem = com.swidch.otacauth.Model.AccountItem()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentAccountNameBinding.inflate(layoutInflater, container, false)

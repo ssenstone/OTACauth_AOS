@@ -18,13 +18,16 @@ class AccountListAdapter: RecyclerView.Adapter<AccountListAdapter.AccountListVie
     var accountFilterList = ArrayList<com.swidch.otacauth.Model.AccountItem>()
     private var mSwidchAuthSDK:SwidchAuthSDK? = null
     private lateinit var countDownTimer: CountDownTimer
+    private var filter = false
 
     inner class AccountListViewHolder(private val binding: OtpListItemBinding): RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(listData: com.swidch.otacauth.Model.AccountItem) {
+        fun bind(listData: com.swidch.otacauth.Model.AccountItem, filterable:Boolean) {
             binding.accountNameText.text = listData.accountName
-            initTimer(listData)
-            generateOTAC(listData)
+            if (!filterable) {
+                initTimer(listData)
+                generateOTAC(listData)
+            }
         }
 
         fun generateOTAC(listData: com.swidch.otacauth.Model.AccountItem){
@@ -81,7 +84,7 @@ class AccountListAdapter: RecyclerView.Adapter<AccountListAdapter.AccountListVie
     override fun getItemCount(): Int = accountFilterList.size
 
     override fun onBindViewHolder(holder: AccountListViewHolder, position: Int) {
-        holder.bind(accountFilterList[position])
+        holder.bind(accountFilterList[position], filter)
     }
 
     override fun getFilter(): Filter {
@@ -92,15 +95,14 @@ class AccountListAdapter: RecyclerView.Adapter<AccountListAdapter.AccountListVie
                     accountFilterList = datalist
                 } else {
                     val resultList = ArrayList<com.swidch.otacauth.Model.AccountItem>()
-
                     for (row in datalist) {
                         if (row.accountName?.lowercase()?.contains(constraint.toString().lowercase()) == true) {
                             resultList.add(row)
                         }
                     }
-
                     accountFilterList = resultList
                 }
+                filter = true
                 val filterResults = FilterResults()
                 filterResults.values = accountFilterList
                 return filterResults

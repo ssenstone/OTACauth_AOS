@@ -43,7 +43,6 @@ class OTACFragment: Fragment() {
         systemId = com.swidch.otacauth.Utils.sharedPreference.SharedPreferenceManager.getStringValue(context, "systemId")
         svrDeviceId = com.swidch.otacauth.Utils.sharedPreference.SharedPreferenceManager.getStringValue(context, "svrDeviceId")
 
-
         initLibrary()
         initCountDownTimer()
         showOTAC(userId, systemId, svrDeviceId)
