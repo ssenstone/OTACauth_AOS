@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.ssenstone.swidchauthsdk.SwidchAuthSDK
 import com.ssenstone.swidchauthsdk.constants.SwidchAuthSDKError
+import com.swidch.otacauth.Model.AccountItem
 import com.swidch.otacauth.databinding.OtpListItemBinding
 import java.lang.Exception
 import java.util.concurrent.TimeUnit
@@ -17,7 +19,6 @@ class AccountListAdapter: RecyclerView.Adapter<AccountListAdapter.AccountListVie
     var datalist = ArrayList<com.swidch.otacauth.Model.AccountItem>()
     var accountFilterList = ArrayList<com.swidch.otacauth.Model.AccountItem>()
     private var mSwidchAuthSDK:SwidchAuthSDK? = null
-    private lateinit var countDownTimer: CountDownTimer
     private var filter = false
 
     inner class AccountListViewHolder(private val binding: OtpListItemBinding): RecyclerView.ViewHolder(binding.root) {
@@ -40,7 +41,7 @@ class AccountListAdapter: RecyclerView.Adapter<AccountListAdapter.AccountListVie
                         Log.e("AccountList", "ERRORCODE : $i\n")
                     }
                 } catch (e: Exception) {
-                    Log.d("TEST_LOG", e.message!!)
+                    Log.e("TEST_LOG", e.message!!)
                 }
             }
         }
@@ -51,7 +52,7 @@ class AccountListAdapter: RecyclerView.Adapter<AccountListAdapter.AccountListVie
                 timer = listData.otacPeriod!!
             }
 
-            listData.countDownTimer = object :CountDownTimer(timer.toLong(), 1000) {
+            listData.countDownTimer = object: CountDownTimer(timer.toLong(), 1000) {
                 override fun onTick(millisUntilFinished: Long) {
                     val seconds = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
                     binding.otpTimer.text = seconds.toString()
@@ -61,6 +62,7 @@ class AccountListAdapter: RecyclerView.Adapter<AccountListAdapter.AccountListVie
                     generateOTAC(listData)
                 }
             }
+
         }
     }
 
@@ -91,6 +93,7 @@ class AccountListAdapter: RecyclerView.Adapter<AccountListAdapter.AccountListVie
         return object : Filter() {
             override fun performFiltering(constraint: CharSequence?): FilterResults {
                 val charSearch = constraint.toString()
+
                 if (charSearch.isEmpty()) {
                     accountFilterList = datalist
                 } else {
@@ -109,7 +112,7 @@ class AccountListAdapter: RecyclerView.Adapter<AccountListAdapter.AccountListVie
             }
 
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                accountFilterList = results?.values as ArrayList<com.swidch.otacauth.Model.AccountItem>
+                accountFilterList = results?.values as ArrayList<AccountItem>
                 notifyDataSetChanged()
             }
 

@@ -49,16 +49,44 @@ class MainActivity : AppCompatActivity() {
         initSideMenu()
         initLibrary()
         switchOTPFragment()
-
     }
 
-    override fun onUserLeaveHint() {
-        super.onUserLeaveHint()
-        finish()
+    override fun onResume() {
+        super.onResume()
+        val useStatus = SharedPreferenceManager.getStringValue(this, SharedPreferenceHelper.KEY_STRING_SECURITY_STATUS)
+        val authStatus = SharedPreferenceManager.getBooleanValue(this, SharedPreferenceHelper.KEY_STRING_AUTH_STATUS, false)
+
+        if (!authStatus) {
+            when (useStatus)
+            {
+                "USE_ALL" -> {
+                    switchPinActivity()
+                }
+                "USE_PIN" -> {
+                    switchPinActivity()
+                }
+                "USE_BIOMETRIC" -> {
+                    switchBiometricActivity()
+                }
+                else -> {
+                    switchPinActivity()
+                }
+            }
+        }
     }
 
     override fun onPause() {
         super.onPause()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        SharedPreferenceManager.setBooleanValue(this@MainActivity, SharedPreferenceHelper.KEY_STRING_AUTH_STATUS, false)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        SharedPreferenceManager.setBooleanValue(this@MainActivity, SharedPreferenceHelper.KEY_STRING_AUTH_STATUS, false)
     }
 
     override fun onBackPressed() {
@@ -116,6 +144,19 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+    private fun switchPinActivity() {
+        val intent = Intent(this, com.swidch.otacauth.View.PinActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT)
+        startActivity(intent)
+    }
+
+    private fun switchBiometricActivity() {
+        val intent = Intent(this, com.swidch.otacauth.View.BiometricActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT)
+        startActivity(intent)
+    }
+
 
     fun switchOTPFragment() {
         step = OTP

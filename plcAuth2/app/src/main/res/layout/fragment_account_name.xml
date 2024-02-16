@@ -70,7 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
         android:layout_marginTop="16dp"
-        android:text="@string/qrcode_edit_warning_message"
+        android:text="@string/account_message_fail"
         android:textColor="@color/warning_text_color"
         android:textSize="12sp"
         android:drawablePadding="4dp"

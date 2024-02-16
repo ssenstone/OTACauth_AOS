@@ -28,6 +28,7 @@ class AccountFragment: Fragment() {
         }
 
         binding.qrscanButton.setOnClickListener {
+
             activity.switchQRScanFragment()
         }
 

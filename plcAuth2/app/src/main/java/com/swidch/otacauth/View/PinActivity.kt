@@ -26,7 +26,7 @@ class PinActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityPinBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val pin =SharedPreferenceManager.getStringValue(this, com.swidch.otacauth.Utils.sharedPreference.SharedPreferenceHelper.KEY_STRING_PIN_PASSWORD)
+        val pin = SharedPreferenceManager.getStringValue(this, com.swidch.otacauth.Utils.sharedPreference.SharedPreferenceHelper.KEY_STRING_PIN_PASSWORD)
         var count = 0
         useState = SharedPreferenceManager.getStringValue(this, SharedPreferenceHelper.KEY_STRING_SECURITY_STATUS)
 
@@ -73,9 +73,7 @@ class PinActivity: AppCompatActivity() {
                                         val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
                                         imm.hideSoftInputFromWindow(binding.squarePinEdit.windowToken, 0)
                                     }, 30)
-                                    val intent = Intent(this@PinActivity, MainActivity::class.java)
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT)
-                                    startActivity(intent)
+                                    SharedPreferenceManager.setBooleanValue(this@PinActivity, SharedPreferenceHelper.KEY_STRING_AUTH_STATUS, true)
                                 }
                             }
                             finish()

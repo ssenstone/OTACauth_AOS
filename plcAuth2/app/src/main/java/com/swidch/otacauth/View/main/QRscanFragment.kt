@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -37,10 +38,9 @@ class QRscanFragment:Fragment() {
                 arrayOf(android.Manifest.permission.CAMERA),
                 1000
             )
+        } else {
+            init()
         }
-
-        init()
-
         binding.qrcodeButton.setOnClickListener { activity.switchQRCodeFragment() }
 
         binding.backButton.setOnClickListener{
@@ -52,8 +52,13 @@ class QRscanFragment:Fragment() {
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        val activity = requireActivity() as MainActivity
         if (requestCode == 1000) {
-            if (grantResults[0] != PackageManager.PERMISSION_GRANTED) { //거부 }
+            if (grantResults[0] != PackageManager.PERMISSION_GRANTED) { // 거부
+                Toast.makeText(requireContext(), "인증을 위해서는 권한이 필요합니다.", Toast.LENGTH_SHORT).show()
+                activity.switchAccountFragment()
+            } else {
+                init()
             }
         }
     }

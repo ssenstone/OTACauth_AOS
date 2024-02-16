@@ -70,8 +70,8 @@
 
     <string name="alert_pin_change_cancel">PIN 변경을\n취소하시겠습니까?</string>
     <string name="account_title">계정명 설정</string>
-    <string name="account_message_blank">20자 이내 문자/숫자/기호 사용 가능</string>
-    <string name="account_message_fail">이미 등록된 계정입니다.</string>
+    <string name="account_message_blank">20자 이내 문자미/숫자/기호 사용 가능</string>
+    <string name="account_message_fail">이미 등록된 계정명입니다.</string>
     <string name="account_guide">• 계정명은 설정에서 변경이 가능해요.\n• 하단의[등록완료]를 눌러주세요.</string>
     <string name="account_name_complete_button">등록완료</string>
 

@@ -20,7 +20,6 @@ import com.swidch.otacauth.R
 import com.swidch.otacauth.Utils.sharedPreference.SharedPreferenceHelper
 import com.swidch.otacauth.Utils.sharedPreference.SharedPreferenceManager
 import com.swidch.otacauth.View.component.Dialog.CMAlertDialog
-import com.swidch.otacauth.View.main.MainActivity
 import com.swidch.otacauth.databinding.ActivityLandingBinding
 
 class BiometricActivity:AppCompatActivity() {
@@ -109,9 +108,7 @@ class BiometricActivity:AppCompatActivity() {
             override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                 super.onAuthenticationSucceeded(result)
                 Log.d(TAG, "지문 인식 성공")
-                val intent = Intent(this@BiometricActivity, MainActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT)
-                startActivity(intent)
+                SharedPreferenceManager.setBooleanValue(this@BiometricActivity, SharedPreferenceHelper.KEY_STRING_AUTH_STATUS, true)
                 finish()
             }
 

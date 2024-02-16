@@ -7,6 +7,8 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.swidch.otacauth.R
+import com.swidch.otacauth.Utils.sharedPreference.SharedPreferenceHelper
+import com.swidch.otacauth.Utils.sharedPreference.SharedPreferenceManager
 import com.swidch.otacauth.View.BiometricActivity
 import com.swidch.otacauth.View.main.MainActivity
 import com.swidch.otacauth.databinding.ActivitySettingTermsOfServiceBinding
@@ -22,6 +24,16 @@ class TermsActivity:AppCompatActivity() {
 
         switchCategory()
         initActionBar()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        SharedPreferenceManager.setBooleanValue(this, SharedPreferenceHelper.KEY_STRING_AUTH_STATUS, true)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        SharedPreferenceManager.setBooleanValue(this, SharedPreferenceHelper.KEY_STRING_AUTH_STATUS, true)
     }
 
     override fun onBackPressed() {
@@ -54,7 +66,7 @@ class TermsActivity:AppCompatActivity() {
         supportFragmentManager.beginTransaction().replace(R.id.container, mFragment!!).commit()
     }
 
-   fun switchCategory() {
+   private fun switchCategory() {
         step = CATEGORY
         val bundle = Bundle()
         val settingTitle = findViewById<TextView>(R.id.setting_bar_title)

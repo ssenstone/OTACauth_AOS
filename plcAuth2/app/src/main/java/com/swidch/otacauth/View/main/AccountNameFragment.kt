@@ -37,7 +37,6 @@ class AccountNameFragment: Fragment() {
             e.printStackTrace()
         }
 
-
         binding.completeButton.setOnClickListener {
            if (checkValidation()) {
                activity.switchOTPFragment()

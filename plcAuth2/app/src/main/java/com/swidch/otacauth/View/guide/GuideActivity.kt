@@ -21,27 +21,12 @@ class GuideActivity: AppCompatActivity() {
         val guideCheck =  SharedPreferenceManager.getBooleanValue(this, "GuideCheck", false)
 
         viewPagerAdapter = ViewPagerAdapter(this)
-        val useStatus = SharedPreferenceManager.getStringValue(this, SharedPreferenceHelper.KEY_STRING_SECURITY_STATUS)
 
         binding.viewPager.adapter = viewPagerAdapter
         binding.guideButton.setText(R.string.guide_button_text)
 
         if (guideCheck == true) {
-            when (useStatus)
-            {
-                "USE_ALL" -> {
-                    switchPinActivity()
-                }
-                "USE_PIN" -> {
-                    switchPinActivity()
-                }
-                "USE_BIOMETRIC" -> {
-                    switchBiometricActivity()
-                }
-                else -> {
-                    switchPinActivity()
-                }
-            }
+            switchMainActivity()
         }
 
         binding.guideButton.setOnClickListener {
@@ -49,21 +34,7 @@ class GuideActivity: AppCompatActivity() {
                 switchGuide2()
                 return@setOnClickListener
             } else {
-                when (useStatus)
-                {
-                    "USE_ALL" -> {
-                        switchPinActivity()
-                    }
-                    "USE_PIN" -> {
-                        switchPinActivity()
-                    }
-                    "USE_BIOMETRIC" -> {
-                        switchBiometricActivity()
-                    }
-                    else -> {
-                        switchPinActivity()
-                    }
-                }
+                switchMainActivity()
                 SharedPreferenceManager.setBooleanValue(this, "GuideCheck", true)
                 return@setOnClickListener
             }
@@ -75,15 +46,8 @@ class GuideActivity: AppCompatActivity() {
         binding.viewPager.currentItem = 1
     }
 
-    private fun switchPinActivity() {
-        val intent = Intent(this, com.swidch.otacauth.View.PinActivity::class.java)
-        intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT)
-        startActivity(intent)
-        finish()
-    }
-
-    private fun switchBiometricActivity() {
-        val intent = Intent(this, com.swidch.otacauth.View.BiometricActivity::class.java)
+    private fun switchMainActivity() {
+        val intent = Intent(this, com.swidch.otacauth.View.main.MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT)
         startActivity(intent)
         finish()

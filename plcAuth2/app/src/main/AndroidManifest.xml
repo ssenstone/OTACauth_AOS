@@ -21,6 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         tools:targetApi="31">
+
         <activity
             android:name=".View.guide.GuideActivity"
             android:screenOrientation="portrait"
@@ -33,23 +34,29 @@
         </activity>
 
         <activity android:name=".View.main.MainActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor"
+            tools:replace="screenOrientation"
+            android:exported="false">
         </activity>
 
         <activity android:name=".View.BiometricActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:exported="false">
         </activity>
 
         <activity android:name="com.swidch.otacauth.View.PinActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:exported="false">
         </activity>
 
         <activity android:name=".View.setting.AccountSettingActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:exported="false">
         </activity>
 
         <activity android:name=".View.setting.TermsActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:exported="false">
         </activity>
 
     </application>
