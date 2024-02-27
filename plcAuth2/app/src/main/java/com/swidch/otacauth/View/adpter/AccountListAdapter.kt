@@ -1,5 +1,8 @@
 package com.swidch.otacauth.View.adpter
 
+import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.Color
 import android.os.CountDownTimer
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,9 +11,13 @@ import android.widget.Filter
 import android.widget.Filterable
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.qrcode.QRCodeWriter
 import com.ssenstone.swidchauthsdk.SwidchAuthSDK
 import com.ssenstone.swidchauthsdk.constants.SwidchAuthSDKError
 import com.swidch.otacauth.Model.AccountItem
+import com.swidch.otacauth.R
+import com.swidch.otacauth.View.component.Dialog.QRAlertDialog
 import com.swidch.otacauth.databinding.OtpListItemBinding
 import java.lang.Exception
 import java.util.concurrent.TimeUnit
@@ -18,10 +25,11 @@ import java.util.concurrent.TimeUnit
 class AccountListAdapter: RecyclerView.Adapter<AccountListAdapter.AccountListViewHolder>(), Filterable {
     var datalist = ArrayList<com.swidch.otacauth.Model.AccountItem>()
     var accountFilterList = ArrayList<com.swidch.otacauth.Model.AccountItem>()
+    lateinit var qrAlertDialog: QRAlertDialog
     private var mSwidchAuthSDK:SwidchAuthSDK? = null
     private var filter = false
 
-    inner class AccountListViewHolder(private val binding: OtpListItemBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class AccountListViewHolder(private val binding: OtpListItemBinding, private val context: Context): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(listData: com.swidch.otacauth.Model.AccountItem, filterable:Boolean) {
             binding.accountNameText.text = listData.accountName
@@ -36,7 +44,11 @@ class AccountListAdapter: RecyclerView.Adapter<AccountListAdapter.AccountListVie
                 try {
                     if (i == SwidchAuthSDKError.NO_ERROR) {
                         binding.otpText.text = s2.toString()
+                        qrAlertDialog = QRAlertDialog(context, s2.toString())
                         listData.countDownTimer?.start()
+                        binding.accountLayout.setOnClickListener {
+                            qrAlertDialog.show()
+                        }
                     } else {
                         Log.e("AccountList", "ERRORCODE : $i\n")
                     }
@@ -59,6 +71,7 @@ class AccountListAdapter: RecyclerView.Adapter<AccountListAdapter.AccountListVie
                 }
 
                 override fun onFinish() {
+                    qrAlertDialog.dismiss()
                     generateOTAC(listData)
                 }
             }
@@ -74,7 +87,7 @@ class AccountListAdapter: RecyclerView.Adapter<AccountListAdapter.AccountListVie
             Log.d("AccountList", "SwidchAuth Library Version: ${mSwidchAuthSDK?.sdkVersion}")
         }
 
-        return AccountListViewHolder(binding)
+        return AccountListViewHolder(binding, parent.context)
     }
 
     fun setAccountList(list:ArrayList<com.swidch.otacauth.Model.AccountItem>) {

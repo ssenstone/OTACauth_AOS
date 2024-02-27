@@ -53,30 +53,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        val useStatus = SharedPreferenceManager.getStringValue(this, SharedPreferenceHelper.KEY_STRING_SECURITY_STATUS)
-        val authStatus = SharedPreferenceManager.getBooleanValue(this, SharedPreferenceHelper.KEY_STRING_AUTH_STATUS, false)
-
-        if (!authStatus) {
-            when (useStatus)
-            {
-                "USE_ALL" -> {
-                    switchPinActivity()
-                }
-                "USE_PIN" -> {
-                    switchPinActivity()
-                }
-                "USE_BIOMETRIC" -> {
-                    switchBiometricActivity()
-                }
-                else -> {
-                    switchPinActivity()
-                }
-            }
-        }
-    }
-
-    override fun onPause() {
-        super.onPause()
     }
 
     override fun onDestroy() {

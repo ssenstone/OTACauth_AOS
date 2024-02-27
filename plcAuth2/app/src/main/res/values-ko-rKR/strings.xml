@@ -24,6 +24,7 @@
     <string name="alert_qr_failed_message">오류가 발생했습니다.\nUser_Key를 재요청해주세요.</string>
     <string name="alert_add_account_button">추&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;가</string>
     <string name="alert_ok_button">확인</string>
+    <string name="alert_close_button">닫기</string>
     <string name="alert_cancel_button">취소</string>
     <string name="alert_delete_button">삭제</string>
     <string name="use_button">사용</string>

@@ -24,6 +24,7 @@
     <string name="alert_qr_failed_message">An error occurred.\nPlease generate a new User Key.</string>
     <string name="alert_add_account_button">Add Account</string>
     <string name="alert_ok_button">Close</string>
+    <string name="alert_close_button">Close</string>
     <string name="alert_cancel_button">Cancel</string>
     <string name="alert_delete_button">Delete</string>
     <string name="account_delete_message">Are you sure you want to delete the account?</string>
