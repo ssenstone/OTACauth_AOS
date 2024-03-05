@@ -68,6 +68,10 @@ class AccountNameFragment: Fragment() {
         }
 
         for (i in accountArrayList) {
+            if (i.userId == accountItem.userId) {
+                accountArrayList.remove(i)
+            }
+
             if (i.accountName == binding.accountNameEditText.text.toString()) {
                 binding.underLineEdittext.setBackgroundResource(R.color.warning_text_color)
                 binding.editWarningMessage.visibility = View.VISIBLE

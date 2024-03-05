@@ -1,8 +1,11 @@
 package com.swidch.otacauth.View.guide
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.swidch.otacauth.R
 import com.swidch.otacauth.Utils.sharedPreference.SharedPreferenceHelper

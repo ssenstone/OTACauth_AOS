@@ -1,6 +1,5 @@
 package com.swidch.otacauth.View.setting
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -39,9 +38,7 @@ class TermsActivity:AppCompatActivity() {
     override fun onBackPressed() {
         when(step) {
            CATEGORY -> {
-               val intent = Intent(this, MainActivity::class.java)
-               intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT)
-               startActivity(intent)
+              finish()
            }
            TERMS_OF_SERVICE -> {switchCategory()}
         }

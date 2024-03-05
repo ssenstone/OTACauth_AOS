@@ -1,6 +1,7 @@
 package com.swidch.otacauth.View.main
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
@@ -8,6 +9,8 @@ import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.ssenstone.swidchauthsdk.SwidchAuthSDK
@@ -21,12 +24,14 @@ import com.swidch.otacauth.View.setting.ChangePinFragment
 import com.swidch.otacauth.View.setting.SecurityFragment
 import com.swidch.otacauth.View.setting.TermsActivity
 import com.swidch.otacauth.databinding.MainIncludeDrawerBinding
+import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding:MainIncludeDrawerBinding
     private var step = OTP
     private var mSwidchAuthSDK: SwidchAuthSDK? = null
     private var useStatus: String? = null
+    private var confirmState = false
     var qrState = QR_TATE_SCAN
     var cmAlertDialog: CMAlertDialog ? = null
 
@@ -43,8 +48,16 @@ class MainActivity : AppCompatActivity() {
         binding = MainIncludeDrawerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        confirmState = SharedPreferenceManager.getBooleanValue(this,SharedPreferenceHelper.KEY_STRING_AUTH_STATUS, false)
         useStatus = SharedPreferenceManager.getStringValue(this, SharedPreferenceHelper.KEY_STRING_SECURITY_STATUS)
 
+        if (!confirmState) {
+            if (useStatus == "USE_BIOMETRIC") {
+                switchBiometricActivity()
+            } else {
+                switchPinActivity()
+            }
+        }
         initActionBar()
         initSideMenu()
         initLibrary()
@@ -57,11 +70,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        SharedPreferenceManager.setBooleanValue(this@MainActivity, SharedPreferenceHelper.KEY_STRING_AUTH_STATUS, false)
-    }
-
-    override fun onStop() {
-        super.onStop()
         SharedPreferenceManager.setBooleanValue(this@MainActivity, SharedPreferenceHelper.KEY_STRING_AUTH_STATUS, false)
     }
 
@@ -132,7 +140,6 @@ class MainActivity : AppCompatActivity() {
         intent.addFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT)
         startActivity(intent)
     }
-
 
     fun switchOTPFragment() {
         step = OTP

@@ -1,12 +1,15 @@
 package com.swidch.otacauth.View.main
 
 import android.content.Context.INPUT_METHOD_SERVICE
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.widget.SearchView
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,6 +25,17 @@ class OTPFragment: Fragment() {
     override fun onCreateView(inflater:LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentOtpBinding.inflate(layoutInflater, container, false)
         val activity = requireActivity() as MainActivity
+        val context = requireContext()
+        val cameraPermissionCheck = ContextCompat.checkSelfPermission(context, android.Manifest.permission.CAMERA)
+
+        if (cameraPermissionCheck != PackageManager.PERMISSION_GRANTED) { // 권한이 없는 경우
+            ActivityCompat.requestPermissions(
+                activity,
+                arrayOf(android.Manifest.permission.CAMERA),
+                1000
+            )
+        }
+
         binding.addAccountButton.setOnClickListener {
             val manager = activity.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager?
             manager!!.hideSoftInputFromWindow(
@@ -59,10 +73,12 @@ class OTPFragment: Fragment() {
             binding.otpListRecyclerView.visibility = View.VISIBLE
             binding.blankImgHeight.visibility = View.GONE
             binding.blankImg.visibility = View.GONE
+            binding.blankText.visibility = View.GONE
         } else {
             binding.otpListRecyclerView.visibility = View.GONE
             binding.blankImgHeight.visibility = View.VISIBLE
             binding.blankImg.visibility = View.VISIBLE
+            binding.blankText.visibility = View.VISIBLE
         }
 
         binding.searchOtpEditText.setOnQueryTextListener(object : SearchView.OnQueryTextListener {

@@ -35,7 +35,7 @@ class QRAlertDialog(context: Context, value: String) : Dialog(context) {
 
     private fun generateQRCode(value: String?):Boolean {
         val qrCode = QRCodeWriter()
-        val bitMatrix = qrCode.encode(value, BarcodeFormat.QR_CODE, 120, 120)
+        val bitMatrix = qrCode.encode(value, BarcodeFormat.QR_CODE, 232, 232)
         val bitmap: Bitmap = Bitmap.createBitmap(bitMatrix.width, bitMatrix.height, Bitmap.Config.RGB_565)
         for (i in 0 until bitMatrix.width) {
             for (j in 0 until bitMatrix.height) {

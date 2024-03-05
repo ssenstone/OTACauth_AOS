@@ -8,19 +8,18 @@ import android.provider.Settings
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG
-import androidx.biometric.BiometricPrompt.PromptInfo
-import androidx.core.content.ContextCompat
-import java.util.concurrent.Executor
-
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager
+import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG
 import androidx.biometric.BiometricPrompt
+import androidx.biometric.BiometricPrompt.PromptInfo
+import androidx.core.content.ContextCompat
 import com.swidch.otacauth.R
 import com.swidch.otacauth.Utils.sharedPreference.SharedPreferenceHelper
 import com.swidch.otacauth.Utils.sharedPreference.SharedPreferenceManager
 import com.swidch.otacauth.View.component.Dialog.CMAlertDialog
 import com.swidch.otacauth.databinding.ActivityLandingBinding
+import java.util.concurrent.Executor
 
 class BiometricActivity:AppCompatActivity() {
     private lateinit var binding: ActivityLandingBinding
@@ -59,6 +58,10 @@ class BiometricActivity:AppCompatActivity() {
         }
 
         authenticateToEncrypt()
+    }
+
+    override fun onBackPressed() {
+        //super.onBackPressed();
     }
 
     private fun setPromptInfo(): BiometricPrompt.PromptInfo {

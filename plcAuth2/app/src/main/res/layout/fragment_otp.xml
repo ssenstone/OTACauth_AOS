@@ -58,6 +58,15 @@
         android:layout_gravity="center"
         android:src="@drawable/no_item_img"/>
 
+    <TextView
+        android:id="@+id/blank_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:textColor="#787A82"
+        android:text="@string/otp_blank_message"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/otp_list_recycler_view"
         android:visibility="gone"

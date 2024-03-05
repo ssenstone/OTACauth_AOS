@@ -107,6 +107,10 @@ class PinActivity: AppCompatActivity() {
         })
     }
 
+    override fun onBackPressed() {
+        //super.onBackPressed();
+    }
+
     private fun resetApplication() {
         SharedPreferenceManager.setStringValue(this, SharedPreferenceHelper.KEY_STRING_SECURITY_STATUS, "USE_PIN")
         SharedPreferenceManager.setAccountList(this, null)

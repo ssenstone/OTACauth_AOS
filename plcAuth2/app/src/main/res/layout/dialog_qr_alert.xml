@@ -11,8 +11,8 @@
         android:id="@+id/qr_code_image2"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="12dp"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
+        android:layout_width="232dp"
+        android:layout_height="232dp"
         android:importantForAccessibility="no"/>
 
     <LinearLayout
