@@ -34,7 +34,7 @@
         </activity>
 
         <activity android:name=".View.main.MainActivity"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             tools:replace="screenOrientation"
             android:exported="false">
         </activity>
