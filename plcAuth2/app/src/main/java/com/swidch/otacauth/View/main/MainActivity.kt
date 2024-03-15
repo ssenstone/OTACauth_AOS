@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
+import androidx.biometric.BiometricManager
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
@@ -70,6 +71,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+
+    }
+
+    override fun onPause() {
+        super.onPause()
         SharedPreferenceManager.setBooleanValue(this@MainActivity, SharedPreferenceHelper.KEY_STRING_AUTH_STATUS, false)
     }
 
@@ -223,7 +229,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun switchEnrollSettings() {
-        val enrollIntent = Intent(Settings.ACTION_BIOMETRIC_ENROLL)
+        var enrollIntent = Intent(Settings.ACTION_SECURITY_SETTINGS)
+        val biometricManager = BiometricManager.from(this)
+        when (biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG)) {
+            // 생체 인증 정보가 등록되어 있지 않은 경우
+            BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
+                enrollIntent = Intent(Settings.ACTION_BIOMETRIC_ENROLL)
+            }
+        }
+
         runOnUiThread() {
             startActivity(enrollIntent)
         }

@@ -63,24 +63,6 @@ class SecurityFragment:Fragment() {
             activity.switchSecurityPinChange()
         }
 
-        val biometricManager = BiometricManager.from(context)
-
-        when (biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG)) {
-            // 생체 인증 사용가능
-            BiometricManager.BIOMETRIC_SUCCESS -> {
-                SharedPreferenceManager.setStringValue(context, SharedPreferenceHelper.KEY_STRING_SECURITY_STATUS, "USE_ALL")
-                binding.enrollButton.setText(R.string.delete_button)
-            }
-            // 기기에서 생체 인증을  지원하지 않는 경우
-            BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> {
-              binding.enrollButton.setText(R.string.use_button)
-            }
-            // 생체 인증 정보가 등록되어 있지 않은 경우
-            BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
-                binding.enrollButton.setText(R.string.use_button)
-            }
-        }
-
         binding.useAllCheckbox.setOnCheckedChangeListener(object :OnCheckedChangeListener {
             override fun onCheckedChanged(buttonView: CompoundButton?, isChecked: Boolean) {
                 if (isChecked) {
@@ -202,5 +184,26 @@ class SecurityFragment:Fragment() {
 
 
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val context = requireContext()
+        val biometricManager = BiometricManager.from(context)
+
+        when (biometricManager.canAuthenticate(BiometricManager.Authenticators.BIOMETRIC_STRONG)) {
+            // 생체 인증 사용가능
+            BiometricManager.BIOMETRIC_SUCCESS -> {
+                binding.enrollButton.setText(R.string.delete_button)
+            }
+            // 기기에서 생체 인증을  지원하지 않는 경우
+            BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> {
+                binding.enrollButton.setText(R.string.use_button)
+            }
+            // 생체 인증 정보가 등록되어 있지 않은 경우
+            BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
+                binding.enrollButton.setText(R.string.use_button)
+            }
+        }
     }
 }

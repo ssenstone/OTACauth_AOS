@@ -44,11 +44,11 @@ class AccountListAdapter: RecyclerView.Adapter<AccountListAdapter.AccountListVie
                 try {
                     if (i == SwidchAuthSDKError.NO_ERROR) {
                         binding.otpText.text = s2.toString()
-                        qrAlertDialog = QRAlertDialog(context, s2.toString())
+//                        qrAlertDialog = QRAlertDialog(context, s2.toString())
                         listData.countDownTimer?.start()
-                        binding.accountLayout.setOnClickListener {
-                            qrAlertDialog.show()
-                        }
+//                        binding.accountLayout.setOnClickListener {
+//                            qrAlertDialog.show()
+//                        }
                     } else {
                         Log.e("AccountList", "ERRORCODE : $i\n")
                     }
@@ -71,7 +71,7 @@ class AccountListAdapter: RecyclerView.Adapter<AccountListAdapter.AccountListVie
                 }
 
                 override fun onFinish() {
-                    qrAlertDialog.dismiss()
+//                    qrAlertDialog.dismiss()
                     generateOTAC(listData)
                 }
             }

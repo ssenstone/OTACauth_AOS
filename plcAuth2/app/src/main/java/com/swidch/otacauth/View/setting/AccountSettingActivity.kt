@@ -74,6 +74,25 @@ class AccountSettingActivity: AppCompatActivity() {
         mFragment = SettingAccountListFragment()
         mFragment?.arguments = bundle
         supportFragmentManager.beginTransaction().replace(R.id.container, mFragment!!).commit()
+        val actionButton = findViewById<TextView>(R.id.setting_action_button)
+        actionButton.setText(R.string.setting_bar_account_complete)
+
+        actionButton.setOnClickListener {
+            val changeAccountListString = SharedPreferenceManager.getChangeAccountList(this)
+            val gson = GsonBuilder().create()
+
+            if (!changeAccountListString.isNullOrEmpty()) {
+                val accountList = gson.fromJson(changeAccountListString, Array<com.swidch.otacauth.Model.AccountItem>::class.java).toList()
+                val accountArrayList = ArrayList<com.swidch.otacauth.Model.AccountItem>()
+                accountArrayList.addAll(accountList)
+                val json = gson.toJson(accountArrayList)
+                SharedPreferenceManager.setAccountList(this,json)
+                finish()
+            } else {
+                finish()
+                return@setOnClickListener
+            }
+        }
     }
 
     fun switchAccountNameChangeFragment(userId:String) {
