@@ -11,11 +11,13 @@ import com.google.zxing.BarcodeFormat
 import com.google.zxing.qrcode.QRCodeWriter
 import com.swidch.otacauth.R
 
+
 class QRAlertDialog(context: Context, value: String) : Dialog(context) {
 
     private var otacValue: String? = value
     private lateinit var negativeButton: Button
     private lateinit var qrCodeImage: ImageView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,6 +35,7 @@ class QRAlertDialog(context: Context, value: String) : Dialog(context) {
         negativeButton.setOnClickListener{ dismiss() }
     }
 
+
     private fun generateQRCode(value: String?):Boolean {
         val qrCode = QRCodeWriter()
         val bitMatrix = qrCode.encode(value, BarcodeFormat.QR_CODE, 232, 232)
@@ -42,7 +45,7 @@ class QRAlertDialog(context: Context, value: String) : Dialog(context) {
                 val color = if (bitMatrix.get(i,j)) {
                     Color.BLACK
                 } else {
-                    context.getColor(R.color.qr_code_background)
+                    context.getColor(R.color.qr_code_background_white)
                 }
                 bitmap.setPixel(i, j, color)
             }

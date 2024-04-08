@@ -15,12 +15,14 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
 import com.swidch.otacauth.View.adpter.AccountListAdapter
+import com.swidch.otacauth.View.component.Dialog.QRAlertDialog
 import com.swidch.otacauth.databinding.FragmentOtpBinding
 
 
 class OTPFragment: Fragment() {
     private var _binding: FragmentOtpBinding? = null
     private val binding get() = _binding!!
+
 
     override fun onCreateView(inflater:LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentOtpBinding.inflate(layoutInflater, container, false)
@@ -65,7 +67,6 @@ class OTPFragment: Fragment() {
             val accountList = gson.fromJson(accountListString, Array<com.swidch.otacauth.Model.AccountItem>::class.java).toList()
             val accountArrayList = ArrayList<com.swidch.otacauth.Model.AccountItem>()
             accountArrayList.addAll(accountList)
-
             binding.otpListRecyclerView.adapter = accountListAdapter
             binding.otpListRecyclerView.layoutManager = LinearLayoutManager(requireContext())
             accountListAdapter.setAccountList(accountArrayList)

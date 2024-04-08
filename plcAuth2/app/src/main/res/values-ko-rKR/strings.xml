@@ -4,6 +4,8 @@
     <string name="otac">OTAC</string>
     <string name="version_title">버전정보</string>
 
+    <string name="qr_alert_title">OTAC QR</string>
+
     <string name="setting_title">설정</string>
     <string name="setting_account">계정 편집</string>
     <string name="setting_security">보안기능 추가</string>

@@ -33,6 +33,14 @@
         <item name="android:textSize">12sp</item>
     </style>
 
+    <style name="qr_alert_negative_button_style">
+        <item name="backgroundTint">@null</item>
+        <item name="android:background">@drawable/background_negative_button</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
     <style name="positive_button_style">
         <item name="backgroundTint">@null</item>
         <item name="android:background">@drawable/background_positive_button</item>

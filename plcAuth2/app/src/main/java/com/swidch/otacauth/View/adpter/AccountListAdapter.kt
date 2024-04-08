@@ -1,22 +1,16 @@
 package com.swidch.otacauth.View.adpter
 
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.Color
 import android.os.CountDownTimer
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.google.zxing.BarcodeFormat
-import com.google.zxing.qrcode.QRCodeWriter
 import com.ssenstone.swidchauthsdk.SwidchAuthSDK
 import com.ssenstone.swidchauthsdk.constants.SwidchAuthSDKError
 import com.swidch.otacauth.Model.AccountItem
-import com.swidch.otacauth.R
 import com.swidch.otacauth.View.component.Dialog.QRAlertDialog
 import com.swidch.otacauth.databinding.OtpListItemBinding
 import java.lang.Exception
@@ -37,6 +31,11 @@ class AccountListAdapter: RecyclerView.Adapter<AccountListAdapter.AccountListVie
                 initTimer(listData)
                 generateOTAC(listData)
             }
+
+            binding.accountLayout.setOnClickListener {
+                qrAlertDialog = QRAlertDialog(context, binding.otpText.text.toString())
+                qrAlertDialog.show()
+            }
         }
 
         fun generateOTAC(listData: com.swidch.otacauth.Model.AccountItem){
@@ -44,11 +43,8 @@ class AccountListAdapter: RecyclerView.Adapter<AccountListAdapter.AccountListVie
                 try {
                     if (i == SwidchAuthSDKError.NO_ERROR) {
                         binding.otpText.text = s2.toString()
-//                        qrAlertDialog = QRAlertDialog(context, s2.toString())
                         listData.countDownTimer?.start()
-//                        binding.accountLayout.setOnClickListener {
-//                            qrAlertDialog.show()
-//                        }
+                        qrAlertDialog = QRAlertDialog(context, binding.otpText.text.toString())
                     } else {
                         Log.e("AccountList", "ERRORCODE : $i\n")
                     }
@@ -58,7 +54,7 @@ class AccountListAdapter: RecyclerView.Adapter<AccountListAdapter.AccountListVie
             }
         }
 
-        fun initTimer(listData: com.swidch.otacauth.Model.AccountItem) {
+        private fun initTimer(listData: com.swidch.otacauth.Model.AccountItem) {
             var timer = 60000
             if (listData.otacPeriod != null) {
                 timer = listData.otacPeriod!!
@@ -71,7 +67,7 @@ class AccountListAdapter: RecyclerView.Adapter<AccountListAdapter.AccountListVie
                 }
 
                 override fun onFinish() {
-//                    qrAlertDialog.dismiss()
+                    qrAlertDialog.dismiss()
                     generateOTAC(listData)
                 }
             }
@@ -110,7 +106,7 @@ class AccountListAdapter: RecyclerView.Adapter<AccountListAdapter.AccountListVie
                 if (charSearch.isEmpty()) {
                     accountFilterList = datalist
                 } else {
-                    val resultList = ArrayList<com.swidch.otacauth.Model.AccountItem>()
+                    val resultList = ArrayList<AccountItem>()
                     for (row in datalist) {
                         if (row.accountName?.lowercase()?.contains(constraint.toString().lowercase()) == true) {
                             resultList.add(row)

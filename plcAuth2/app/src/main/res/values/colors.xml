@@ -18,6 +18,7 @@
     <color name="timer_color">#F3451E</color>
     <color name="user_key_edit_color">#F6F6F6</color>
     <color name="qr_code_background">#DFDFDF</color>
+    <color name="qr_code_background_white">#ffffff</color>
     <color name="under_line_color">#EFEFEF</color>
     <color name="hint_text_color">#ACACAC</color>
     <color name="warning_text_color">#EA1616</color>

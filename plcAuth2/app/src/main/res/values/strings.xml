@@ -4,6 +4,8 @@
     <string name="otac">OTAC</string>
     <string name="version_title">Version information</string>
 
+    <string name="qr_alert_title">OTAC QR</string>
+
     <string name="setting_title">Settings</string>
     <string name="setting_account">Edit Account</string>
     <string name="setting_security">Security Settings</string>
