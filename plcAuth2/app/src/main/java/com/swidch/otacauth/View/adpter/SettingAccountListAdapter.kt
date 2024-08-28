@@ -51,6 +51,7 @@ class SettingAccountListAdapter: RecyclerView.Adapter<SettingAccountListAdapter.
         }
     }
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SettingAccountListViewHolder {
         val binding = SettingListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         context = parent.context

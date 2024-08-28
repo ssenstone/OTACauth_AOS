@@ -1,5 +1,6 @@
 package com.swidch.otacauth.View.main
 
+import android.app.appsearch.GlobalSearchSession
 import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
@@ -25,6 +26,10 @@ import com.swidch.otacauth.View.setting.ChangePinFragment
 import com.swidch.otacauth.View.setting.SecurityFragment
 import com.swidch.otacauth.View.setting.TermsActivity
 import com.swidch.otacauth.databinding.MainIncludeDrawerBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
 import kotlin.properties.Delegates
 
 class MainActivity : AppCompatActivity() {
@@ -48,9 +53,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = MainIncludeDrawerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val context = this
+        GlobalScope.launch {
+            Dispatchers.Main.isActive
+            confirmState = SharedPreferenceManager.getBooleanValue(context,SharedPreferenceHelper.KEY_STRING_AUTH_STATUS, false)
+            useStatus = SharedPreferenceManager.getStringValue(context, SharedPreferenceHelper.KEY_STRING_SECURITY_STATUS)
+        }
 
-        confirmState = SharedPreferenceManager.getBooleanValue(this,SharedPreferenceHelper.KEY_STRING_AUTH_STATUS, false)
-        useStatus = SharedPreferenceManager.getStringValue(this, SharedPreferenceHelper.KEY_STRING_SECURITY_STATUS)
 
         if (!confirmState) {
             if (useStatus == "USE_BIOMETRIC") {

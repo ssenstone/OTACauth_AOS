@@ -68,7 +68,7 @@ class AccountNameFragment: Fragment() {
         }
 
         for (i in accountArrayList) {
-            if (i.userId == accountItem.userId) {
+            if (i.userId == accountItem.userId && i.svrDeviceId == accountItem.svrDeviceId) {
                 accountArrayList.remove(i)
             }
 
