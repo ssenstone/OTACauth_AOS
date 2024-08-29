@@ -54,11 +54,8 @@ class MainActivity : AppCompatActivity() {
         binding = MainIncludeDrawerBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val context = this
-        GlobalScope.launch {
-            Dispatchers.Main.isActive
-            confirmState = SharedPreferenceManager.getBooleanValue(context,SharedPreferenceHelper.KEY_STRING_AUTH_STATUS, false)
-            useStatus = SharedPreferenceManager.getStringValue(context, SharedPreferenceHelper.KEY_STRING_SECURITY_STATUS)
-        }
+        confirmState = SharedPreferenceManager.getBooleanValue(context,SharedPreferenceHelper.KEY_STRING_AUTH_STATUS, false)
+        useStatus = SharedPreferenceManager.getStringValue(context, SharedPreferenceHelper.KEY_STRING_SECURITY_STATUS)
 
 
         if (!confirmState) {
